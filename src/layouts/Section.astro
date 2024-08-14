@@ -1,0 +1,12 @@
+---
+interface Props {
+	type: "light" | "dark";
+}
+
+const { type } = Astro.props;
+---
+<div class=`w-screen h-fit ${type === "light" ? "bg-gray-200" : "" }`>
+    <section class=`${type === "light" ? "bg-gray-100" : "bg-gray-200" } w-screen h-auto rounded-b-[100px] pt-10 pb-20 px-10`>
+        <slot/>
+    </section>
+</div>
