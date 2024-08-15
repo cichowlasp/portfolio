@@ -1,0 +1,15 @@
+---
+interface Props {
+	info?: string;
+}
+const props = Astro.props;
+---
+
+<div
+	class='bg-gray-200 rounded-full p-1 border-[1px] border-gray-300 border-opacity-50 flex flex-row items-center gap-4 font-bold'
+>
+	{props.info ? <div class='pl-4 font-normal'>{props.info}</div> : null}
+	<button class='bg-gray-100 py-4 px-8 rounded-full' {...props}>
+		<slot />
+	</button>
+</div>
