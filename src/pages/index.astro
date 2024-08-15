@@ -9,7 +9,7 @@ const email = 'cichowlas.p@gmail.com';
 <Layout title='cichowlasp - portfolio'>
 	<main class='flex justify-center items-center flex-col'>
 		<nav
-			class='bg-gray-200 flex flex-row justify-between w-screen p-8 px-16 items-center'
+			class='bg-gray-200 flex flex-row justify-between w-screen p-8 px-16 items-center sticky top-0 z-10 border-b-2 border-gray-300 border-opacity-50'
 		>
 			<div class='flex gap-4'>
 				<Button id='copy' info={email}>Copy</Button>
@@ -18,7 +18,13 @@ const email = 'cichowlas.p@gmail.com';
 
 			<div class='flex flex-row gap-4 font-normal text-lg'>
 				<a
-					href='#'
+					href='#start'
+					class='hover:underline hover:underline-offset-2 hover:cursor-pointer'
+					>Start</a
+				>
+				<div>/</div>
+				<a
+					href='#about-me'
 					class='hover:underline hover:underline-offset-2 hover:cursor-pointer'
 					>About Me</a
 				>
@@ -36,7 +42,7 @@ const email = 'cichowlas.p@gmail.com';
 				>
 			</div>
 		</nav>
-		<Section type='dark'>
+		<Section id='start' type='dark'>
 			<div
 				class='relative p-[5px] border-[1px] border-gray-300 border-opacity-50 w-fit h-fit rounded-full bg-gray-100 mb-4'
 			>
@@ -62,7 +68,7 @@ const email = 'cichowlas.p@gmail.com';
 				simple={true}>Learn more</Button
 			>
 		</Section>
-		<Section type='light'>
+		<Section id='about-me' type='light'>
 			Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla
 			pariatur exercitationem molestiae modi. Suscipit dicta numquam
 			soluta quisquam, perspiciatis id! Repellat ex atque, ullam
@@ -100,17 +106,27 @@ const email = 'cichowlas.p@gmail.com';
 			eius cum necessitatibus amet neque.
 		</Section>
 	</main>
-
-	<script define:vars={{ email }}>
-		const delay = (ms) => new Promise((res) => setTimeout(res, ms));
-		let copyButton = document.querySelector('#copy');
-		copyButton?.addEventListener('click', async () => {
-			await navigator.clipboard
-				.writeText(email)
-				.then(() => (copyButton.textContent = 'Copied!'))
-				.catch((error) => console.error(error));
-			await delay(2000);
-			copyButton.textContent = 'Copy';
-		});
-	</script>
 </Layout>
+
+<script define:vars={{ email }}>
+	const delay = (ms) => new Promise((res) => setTimeout(res, ms));
+	let copyButton = document.querySelector('#copy');
+	copyButton?.addEventListener('click', async () => {
+		await navigator.clipboard
+			.writeText(email)
+			.then(() => (copyButton.textContent = 'Copied!'))
+			.catch((error) => console.error(error));
+		await delay(2000);
+		copyButton.textContent = 'Copy';
+	});
+
+	document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+		anchor.addEventListener('click', function (event) {
+			event.preventDefault();
+
+			document.querySelector(this.getAttribute('href')).scrollIntoView({
+				behavior: 'smooth',
+			});
+		});
+	});
+</script>
