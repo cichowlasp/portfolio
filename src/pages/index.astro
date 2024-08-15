@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import Section from '../layouts/Section.astro';
 import Button from '../components/Button.astro';
+
+const email = 'cichowlas.p@gmail.com';
 ---
 
 <Layout title='cichowlasp - portfolio'>
@@ -10,7 +12,7 @@ import Button from '../components/Button.astro';
 			class='bg-gray-200 flex flex-row justify-between w-screen p-8 px-16 items-center'
 		>
 			<div class='flex gap-4'>
-				<Button info='cichowlas.p@gmail.com'>Copy</Button>
+				<Button id='copy' info={email}>Copy</Button>
 				<Button>CV</Button>
 			</div>
 
@@ -35,10 +37,30 @@ import Button from '../components/Button.astro';
 			</div>
 		</nav>
 		<Section type='dark'>
-			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex, sed.
-			Inventore adipisci consequatur facere veritatis ullam totam
-			voluptatibus aperiam, eaque aliquid quibusdam perspiciatis, tenetur
-			ratione ea tempore, deserunt id quod.
+			<div
+				class='relative p-[5px] border-[1px] border-gray-300 border-opacity-50 w-fit h-fit rounded-full bg-gray-100 mb-4'
+			>
+				<img
+					class='w-48 h-48 object-cover rounded-full'
+					src='/me.jpg'
+					alt=''
+				/>
+			</div>
+			<div
+				class='absolute animate-wiggle bg-gray-100 rounded-full w-fit text-center px-4 py-4'
+			>
+				Piotr Cichowlas 👋🏻
+			</div>
+			<div
+				class='bg-gradient-to-r text-[4rem] font-bold text-center leading-[0.9] from-gray-900 to-gray-400 text-transparent bg-clip-text'
+			>
+				Cybersecurity student, <div></div> front-end developer, <div>
+				</div>video editor.
+			</div>
+			<Button
+				class='bg-gray-900 text-gray-100 font-normal mt-16 text-sm'
+				simple={true}>Learn more</Button
+			>
 		</Section>
 		<Section type='light'>
 			Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla
@@ -78,4 +100,17 @@ import Button from '../components/Button.astro';
 			eius cum necessitatibus amet neque.
 		</Section>
 	</main>
+
+	<script define:vars={{ email }}>
+		const delay = (ms) => new Promise((res) => setTimeout(res, ms));
+		let copyButton = document.querySelector('#copy');
+		copyButton?.addEventListener('click', async () => {
+			await navigator.clipboard
+				.writeText(email)
+				.then(() => (copyButton.textContent = 'Copied!'))
+				.catch((error) => console.error(error));
+			await delay(2000);
+			copyButton.textContent = 'Copy';
+		});
+	</script>
 </Layout>
