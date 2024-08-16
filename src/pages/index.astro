@@ -9,14 +9,19 @@ const email = 'cichowlas.p@gmail.com';
 <Layout title='cichowlasp - portfolio'>
 	<main class='flex justify-center items-center flex-col'>
 		<nav
-			class='bg-gray-200 flex flex-row justify-between w-screen p-8 px-16 items-center sticky top-0 z-10 border-b-2 border-gray-300 border-opacity-50'
+			class='bg-gray-200 flex flex-row justify-between w-screen max-w-screen py-4 lg:p-8 lg:px-16 px-8 items-center sticky top-0 z-10 border-b-2 border-gray-300 border-opacity-50 overflow-hidden'
 		>
 			<div class='flex gap-4'>
-				<Button id='copy' info={email}>Copy</Button>
+				<Button class='lg:hidden flex' dark={true} id='email'
+					>Email</Button
+				>
+				<Button class='lg:flex hidden' id='copy' info={email}
+					>Copy</Button
+				>
 				<Button>CV</Button>
 			</div>
 
-			<div class='flex flex-row gap-4 font-normal text-lg'>
+			<div class='lg:flex flex-row gap-4 font-normal text-lg hidden'>
 				<a
 					href='#start'
 					class='hover:underline hover:underline-offset-2 hover:cursor-pointer'
@@ -41,6 +46,9 @@ const email = 'cichowlas.p@gmail.com';
 					>Contact</a
 				>
 			</div>
+			<div class='lg:hidden flex h-8 w-8'>
+				<img src='/portfolio/menu.svg' />
+			</div>
 		</nav>
 		<Section id='start' type='dark'>
 			<div
@@ -58,7 +66,7 @@ const email = 'cichowlas.p@gmail.com';
 				Piotr Cichowlas 👋🏻
 			</div>
 			<div
-				class='bg-gradient-to-r text-[4rem] font-bold text-center leading-[0.9] from-gray-900 to-gray-400 text-transparent bg-clip-text'
+				class='bg-gradient-to-r text-3xl lg:text-7xl font-bold text-center leading-[0.9] from-gray-900 to-gray-400 text-transparent bg-clip-text'
 			>
 				Cybersecurity student, <div></div> front-end developer, <div>
 				</div>video editor.
