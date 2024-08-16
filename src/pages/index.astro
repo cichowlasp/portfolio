@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Section from '../layouts/Section.astro';
 import Button from '../components/Button.astro';
+import Card from '../components/Card.astro';
 
 const email = 'cichowlas.p@gmail.com';
 ---
@@ -123,18 +124,29 @@ const email = 'cichowlas.p@gmail.com';
 			>
 		</Section>
 		<Section id='about-me' type='light' title='About Me'>
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla
-			pariatur exercitationem molestiae modi. Suscipit dicta numquam
-			soluta quisquam, perspiciatis id! Repellat ex atque, ullam
-			laudantium officiis, dicta quae aliquid asperiores illo veritatis
-			quaerat nulla voluptates voluptas quas obcaecati eaque tenetur
-			inventore accusantium nam earum dolorem? Sapiente, expedita
-			temporibus debitis commodi est tenetur mollitia optio modi ipsam?
-			Non eos delectus, dignissimos nulla veniam rem consectetur itaque
-			culpa, voluptates optio illo nostrum ad natus iusto. Maiores
-			adipisci aut facilis unde maxime dolorem laudantium quas esse
-			excepturi sapiente cum facere, expedita obcaecati perspiciatis eos
-			iste incidunt sit quae libero ut, quos asperiores voluptas!
+			<div class='grid grid-cols-2 lg:grid-cols-4 gap-20 lg:px-16'>
+				<Card
+					icon='/portfolio/lock.svg'
+					alt='locker'
+					title='Cybersecurity'
+					body='Securing the future by safeguarding data and systems. Wielding expertise in cybersecurity to protect networks, data, and users from digital threats.'
+				/><Card
+					icon='/portfolio/code.svg'
+					alt='locker'
+					title='Front End Development'
+					body='Building interactive and responsive web experiences. Creating engaging and dynamic user interfaces with a focus on performance and usability.'
+				/><Card
+					icon='/portfolio/video.svg'
+					alt='locker'
+					title='Video Editing'
+					body='Transforming raw footage into captivating stories. Blending technical skills and creative vision to produce polished, professional video content.'
+				/><Card
+					icon='/portfolio/laptop.svg'
+					alt='locker'
+					title='Technology Enthusiast'
+					body='Exploring and mastering the latest in tech. From assembling PCs to diving deep into operating systems, driven by a passion for technology.'
+				/>
+			</div>
 		</Section>
 		<Section type='dark'>
 			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex, sed.
