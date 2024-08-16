@@ -8,10 +8,10 @@ export default {
 			keyframes: {
 				wiggle: {
 					'0%, 100%': {
-						transform: 'translate(150px, -150px) rotate(-12deg)',
+						transform: 'translateY(-150px) rotate(-12deg)',
 					},
 					'50%': {
-						transform: 'translate(150px, -130px) rotate(-12deg)',
+						transform: 'translateY(-130px) rotate(-12deg)',
 					},
 				},
 			},
