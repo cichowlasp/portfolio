@@ -46,10 +46,44 @@ const email = 'cichowlas.p@gmail.com';
 					>Contact</a
 				>
 			</div>
-			<div class='lg:hidden flex h-8 w-8'>
+			<div id='open-menu' class='lg:hidden flex h-8 w-8'>
 				<img src='/portfolio/menu.svg' />
 			</div>
 		</nav>
+		<div
+			id='mobile-menu'
+			class='top-0 right-0 left-0 h-screen hidden fixed bg-gray-200 z-20 flex-col justify-center items-center gap-8 text-xl'
+		>
+			<a
+				href='#start'
+				class='hover:underline hover:underline-offset-2 hover:cursor-pointer'
+				>Start</a
+			>
+
+			<a
+				href='#about-me'
+				class='hover:underline hover:underline-offset-2 hover:cursor-pointer'
+				>About Me</a
+			>
+
+			<a
+				href='#'
+				class='hover:underline hover:underline-offset-2 hover:cursor-pointer'
+				>Projects</a
+			>
+
+			<a
+				href='#'
+				class='hover:underline hover:underline-offset-2 hover:cursor-pointer'
+				>Contact</a
+			>
+
+			<Button
+				id='close-menu'
+				class='bg-gray-100 mt-0 px-4 py-1 font-normal text-xl absolute right-4 top-4'
+				simple={true}>X</Button
+			>
+		</div>
 		<Section id='start' type='dark'>
 			<div class='relative'>
 				<div
@@ -141,4 +175,27 @@ const email = 'cichowlas.p@gmail.com';
 			});
 		});
 	});
+
+	const mobileMenu = document.querySelector('#mobile-menu');
+
+	const hideMenu = () => {
+		mobileMenu.classList.remove('flex');
+		mobileMenu.classList.add('hidden');
+	};
+
+	const showMenu = () => {
+		mobileMenu.classList.remove('hidden');
+		mobileMenu.classList.add('flex');
+	};
+
+	const closeMenu = document.querySelector('#close-menu');
+	const openMenu = document.querySelector('#open-menu');
+
+	closeMenu?.addEventListener('click', () => hideMenu());
+	openMenu?.addEventListener('click', () => showMenu());
+
+	const mobileLinks = mobileMenu.children;
+	[...mobileLinks].forEach((link) =>
+		link.addEventListener('click', () => hideMenu())
+	);
 </script>
