@@ -12,9 +12,17 @@ const email = 'cichowlas.p@gmail.com';
 			class='bg-gray-200 flex flex-row justify-between w-screen max-w-screen py-4 lg:p-8 lg:px-16 px-8 items-center sticky top-0 z-10 border-b-2 border-gray-300 border-opacity-50 overflow-hidden'
 		>
 			<div class='flex gap-4'>
-				<Button class='lg:hidden flex' dark={true} id='email'
-					>Email</Button
+				<div
+					class='lg:hidden bg-gray-200 rounded-full p-1 border-[1px] border-gray-300 border-opacity-50 flex flex-row items-center gap-4 font-bold'
+					'
 				>
+					<a
+						href='mailto:cichowlas.p@gmail.com'
+						class=`bg-gray-900 hover:bg-gray-700 text-gray-100 py-4 px-8 rounded-full`
+					>
+						Email
+					</a>
+				</div>
 				<Button class='lg:flex hidden' id='copy' info={email}
 					>Copy</Button
 				>
@@ -23,7 +31,7 @@ const email = 'cichowlas.p@gmail.com';
 
 			<div class='lg:flex flex-row gap-4 font-normal text-lg hidden'>
 				<a
-					href='#start'
+					href='#top'
 					class='hover:underline hover:underline-offset-2 hover:cursor-pointer'
 					>Start</a
 				>
