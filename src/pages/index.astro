@@ -130,6 +130,7 @@ const email = 'cichowlas.p@gmail.com';
 				</div>video editor.
 			</h1>
 			<Button
+				id='learn-more'
 				class='bg-gray-900 hover:bg-gray-700 text-gray-100 font-normal mt-16 text-sm'
 				simple={true}>Learn more</Button
 			>
@@ -162,10 +163,51 @@ const email = 'cichowlas.p@gmail.com';
 			</div>
 		</Section>
 		<Section type='dark' id='projects' title='Projects'>
-			Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat,
-			nesciunt officiis fugit sint sequi omnis quas est ullam consectetur,
-			consequuntur impedit tempore ab deleniti eum. Quibusdam id maiores
-			excepturi magnam!
+			<div
+				class='bg-gray-200 p-1 border-[1px] border-gray-300 border-opacity-50 min-h-32 w-[calc(100vw-1rem)] rounded-3xl mb-8'
+			>
+				<div
+					class='bg-gray-100 py-4 px-6 min-h-32 w-full gap-2 rounded-[20px]'
+				>
+					<h3 class='font-bold text-xl'>Cybersecurity</h3>
+					<p>
+						Lorem ipsum, dolor sit amet consectetur adipisicing
+						elit. Quaerat, nesciunt officiis fugit sint sequi omnis
+						quas est ullam consectetur, consequuntur impedit tempore
+						ab deleniti eum. Quibusdam id maiores excepturi magnam!
+					</p>
+				</div>
+			</div>
+			<div
+				class='bg-gray-200 p-1 border-[1px] border-gray-300 border-opacity-50 min-h-32 w-[calc(100vw-1rem)] rounded-3xl mb-8'
+			>
+				<div
+					class='bg-gray-100 py-4 px-6 min-h-32 w-full gap-2 rounded-[20px]'
+				>
+					<h3 class='font-bold text-xl'>Front End Development</h3>
+					<p>
+						Lorem ipsum, dolor sit amet consectetur adipisicing
+						elit. Quaerat, nesciunt officiis fugit sint sequi omnis
+						quas est ullam consectetur, consequuntur impedit tempore
+						ab deleniti eum. Quibusdam id maiores excepturi magnam!
+					</p>
+				</div>
+			</div>
+			<div
+				class='bg-gray-200 p-1 border-[1px] border-gray-300 border-opacity-50 min-h-32 w-[calc(100vw-1rem)] rounded-3xl'
+			>
+				<div
+					class='bg-gray-100 py-4 px-6 min-h-32 w-full gap-2 rounded-[20px]'
+				>
+					<h3 class='font-bold text-xl'>Video editing</h3>
+					<p>
+						Lorem ipsum, dolor sit amet consectetur adipisicing
+						elit. Quaerat, nesciunt officiis fugit sint sequi omnis
+						quas est ullam consectetur, consequuntur impedit tempore
+						ab deleniti eum. Quibusdam id maiores excepturi magnam!
+					</p>
+				</div>
+			</div>
 		</Section>
 		<Section id='contact' type='light'>
 			<div
@@ -227,6 +269,11 @@ const email = 'cichowlas.p@gmail.com';
 			</div>
 		</Section>
 	</main>
+	<footer
+		class='bg-gray-200 h-24 flex justify-center items-center text-center font-light text-sm'
+	>
+		<div class='opacity-50'>👨🏻‍💻 Piotr Cichowlas 2024</div>
+	</footer>
 </Layout>
 
 <script define:vars={{ email }}>
@@ -272,5 +319,23 @@ const email = 'cichowlas.p@gmail.com';
 	const mobileLinks = mobileMenu.children;
 	[...mobileLinks].forEach((link) =>
 		link.addEventListener('click', () => hideMenu())
+	);
+
+	const findPosition = (obj) => {
+		var currenttop = 0;
+		if (obj.offsetParent) {
+			do {
+				currenttop += obj.offsetTop;
+			} while ((obj = obj.offsetParent));
+			return [currenttop - 100];
+		}
+	};
+
+	const learnButton = document.querySelector('#learn-more');
+	learnButton.addEventListener('click', () =>
+		scrollTo({
+			top: findPosition(document.querySelector('#about-me')),
+			behavior: 'smooth',
+		})
 	);
 </script>

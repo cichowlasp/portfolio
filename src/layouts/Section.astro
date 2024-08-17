@@ -12,7 +12,7 @@ const { type, title } = Astro.props;
 <div class=` w-screen h-fit ${type === "light" ? "bg-gray-200" : "" } `>
 	<section
 		{...Astro.props}
-		class=`flex flex-col justify-center items-center ${type === "light" ? "bg-gray-100" : "bg-gray-200" } w-screen h-auto rounded-b-[100px] pt-10 pb-20 px-10 scroll-m-48`
+		class=`flex flex-col justify-center items-center ${type === "light" ? "bg-gray-100" : "bg-gray-200" } w-screen h-auto rounded-b-[70px] lg:rounded-b-[100px] pt-10 pb-20 px-10 scroll-m-48`
 	>
 		{title && <h2 class='text-3xl mb-8 font-bold'>{title}</h2>}
 		<slot />
