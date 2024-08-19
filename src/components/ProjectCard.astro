@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import Github from '../assets/icons/github.svg';
 import Info from '../assets/icons/info.svg';
+import Website from '../assets/icons/website.svg';
 
 interface Props {
 	title: string;
@@ -10,9 +11,10 @@ interface Props {
 	icon?: ImageMetadata;
 	alt?: string;
 	text?: string;
+	demo?: string;
 }
 
-const { title, link, icon, alt, text } = Astro.props;
+const { title, link, icon, alt, text, demo } = Astro.props;
 ---
 
 <div
@@ -40,13 +42,14 @@ const { title, link, icon, alt, text } = Astro.props;
 		>
 		<a
 			class='w-full h-full text-center flex justify-center items-center gap-2 font-semibold border-gray-200 border-l-2 hover:bg-gray-200 hover:rounded-br-[15px]'
-			href='#'
+			href={demo ? demo : '#'}
+			target='_blank'
 			><Image
 				width={25}
 				height={25}
 				alt='informations'
-				src={Info}
-			/>More</a
+				src={demo ? Website : Info}
+			/>{demo ? 'Demo' : 'More'}</a
 		>
 	</div>
 </div>

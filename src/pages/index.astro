@@ -17,6 +17,10 @@ import Document from '../assets/icons/document.svg';
 import Contact from '../assets/icons/contact.svg';
 import Email from '../assets/icons/email.svg';
 import Phone from '../assets/icons/phone.svg';
+import BankingDashboard from '../assets/projects/banking-dashboard.png';
+import FakeDashboard from '../assets/projects/fake-dashboard.png';
+import TipCalculator from '../assets/projects/tip-calculator.png';
+import Portfolio from '../assets/projects/portfolio.png';
 
 const email = 'cichowlas.p@gmail.com';
 ---
@@ -189,7 +193,7 @@ const email = 'cichowlas.p@gmail.com';
 					title='Cybersecurity'
 					body='In this section, you will find cybersecurity projects that I completed during my studies. These works cover various aspects of Cybersecurity'
 					><div
-						class='mt-4 flex flex-row gap-4 overflow-x-auto max-w-full'
+						class='flex flex-row gap-4 overflow-x-auto overflow-y-hidden h-full w-full max-w-full'
 					>
 						<ProjectCard
 							title='software-keylogger'
@@ -294,8 +298,55 @@ const email = 'cichowlas.p@gmail.com';
 				</Projects>
 				<Projects
 					title='Front End Development'
-					body='Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat, nesciunt officiis fugit sint sequi omnis quas est ullam consectetur, consequuntur impedit tempore ab deleniti eum. Quibusdam id maiores excepturi magnam!'
-				/>
+					body='A showcase of responsive web apps built with modern front-end technologies. Check out the live demos to see them in action!'
+				>
+					<div class='flex flex-row gap-4 overflow-x-auto max-w-full'>
+						<ProjectCard
+							title='banking-dashboard'
+							link='https://github.com/cichowlasp/banking-dashboard?tab=readme-ov-file'
+							demo='https://cichowlasp.github.io/banking-dashboard/'
+						>
+							<Picture
+								class='w-full h-full object-contain'
+								src={BankingDashboard}
+								alt='banking website'
+							/>
+						</ProjectCard>
+						<ProjectCard
+							title='fake-dashboard'
+							link='https://github.com/cichowlasp/projekt2'
+							demo='https://cichowlasp.github.io/projekt2/'
+						>
+							<Picture
+								class='w-full h-full object-contain'
+								src={FakeDashboard}
+								alt='fake dashboard website'
+							/>
+						</ProjectCard>
+						<ProjectCard
+							title='tip-calculator'
+							link='https://github.com/cichowlasp/tip-calculator-app-main'
+							demo='https://cichowlasp.github.io/tip-calculator-app-main/'
+						>
+							<Picture
+								class='w-full h-full object-contain'
+								src={TipCalculator}
+								alt='fake dashboard website'
+							/>
+						</ProjectCard>
+						<ProjectCard
+							title='portfolio'
+							link='https://github.com/cichowlasp/portfolio'
+							demo='https://cichowlasp.github.io/portfolio/'
+						>
+							<Picture
+								class='w-full h-full object-contain'
+								src={Portfolio}
+								alt='fake dashboard website'
+							/>
+						</ProjectCard>
+					</div>
+				</Projects>
 				<Projects
 					title='Video editing'
 					body='Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat, nesciunt officiis fugit sint sequi omnis quas est ullam consectetur, consequuntur impedit tempore ab deleniti eum. Quibusdam id maiores excepturi magnam!'
