@@ -9,16 +9,6 @@ interface Props {
 const { video } = Astro.props;
 const getId = video.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/);
 const videoId = getId ? getId[2] : null;
-
-const getViews = async () => {
-	if (videoId === null) return 'error';
-	const response = await fetch(`https://www.youtube.com/watch?v=${videoId}`, {
-		mode: 'no-cors',
-	});
-	const html = await response.text();
-	const viewCount = html?.split('viewCount":"')?.[1]?.split('"')?.[0];
-	return viewCount ? viewCount.replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null;
-};
 ---
 
 <div class='relative bg-gray-200 min-h-64 min-w-64 w-64 h-64 rounded-[20px]'>
@@ -31,7 +21,7 @@ const getViews = async () => {
 		/>
 		<div class='w-full flex justify-center text-center font-bold pt-2'>
 			<span class='font-semibold mr-1'>Views:</span>
-			<div id='views'>{await getViews}</div>
+			<div id={videoId}></div>
 		</div>
 	</div>
 	<div
@@ -46,3 +36,19 @@ const getViews = async () => {
 		</a>
 	</div>
 </div>
+
+<script type='module' define:vars={{ videoId }}>
+	const getViews = async () => {
+		if (videoId === null) return 'error';
+		const response = await fetch(
+			`https://corsproxy.io/?https://www.youtube.com/watch?v=${videoId}`
+		);
+		const html = await response.text();
+		const viewCount = html?.split('viewCount":"')?.[1]?.split('"')?.[0];
+		return viewCount
+			? viewCount.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+			: null;
+	};
+	const viewDiv = document.querySelector('#' + videoId);
+	await getViews().then((text) => (viewDiv.textContent = text));
+</script>
