@@ -5,6 +5,7 @@ import Button from '../components/Button.astro';
 import Card from '../components/Card.astro';
 import Projects from '../components/Projects.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import VideoCard from '../components/VideoCard.astro';
 import { Image } from 'astro:assets';
 import { Picture } from 'astro:assets';
 import Me from '../assets/pictures/me.webp';
@@ -349,8 +350,32 @@ const email = 'cichowlas.p@gmail.com';
 				</Projects>
 				<Projects
 					title='Video editing'
-					body='Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat, nesciunt officiis fugit sint sequi omnis quas est ullam consectetur, consequuntur impedit tempore ab deleniti eum. Quibusdam id maiores excepturi magnam!'
-				/>
+					body='Discover video editing projects that showcase my skills in visual storytelling, from color grading to motion graphics.'
+				>
+					<div class='flex flex-row gap-4 overflow-x-auto max-w-full'>
+						<VideoCard
+							video='https://www.youtube.com/watch?v=pV8LClUvU7s'
+						/>
+						<VideoCard
+							video='https://www.youtube.com/watch?v=uebqfy3YX_s'
+						/>
+						<VideoCard
+							video='https://www.youtube.com/watch?v=jJqd73ba_nY'
+						/>
+						<VideoCard
+							video='https://www.youtube.com/watch?v=ia9wrZtTzY0'
+						/>
+						<VideoCard
+							video='https://www.youtube.com/watch?v=ItR-RzSl-H4'
+						/>
+						<VideoCard
+							video='https://www.youtube.com/watch?v=HCN7D_xpI7M'
+						/>
+						<VideoCard
+							video='https://www.youtube.com/watch?v=Jj6UyNc8cYQ'
+						/>
+					</div>
+				</Projects>
 			</div>
 		</Section>
 		<Section id='contact' type='light'>
