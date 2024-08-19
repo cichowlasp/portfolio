@@ -1,4 +1,6 @@
 ---
+import Me from '../assets/pictures/me.webp';
+
 interface Props {
 	title: string;
 }
@@ -13,6 +15,39 @@ const { title } = Astro.props;
 		<meta
 			name='description'
 			content='Piotr Cichowlas - Personal Portfolio'
+		/>
+		<meta
+			property='og:url'
+			content='https://cichowlasp.github.io/portfolio/'
+		/>
+		<meta property='og:type' content='article' />
+		<meta
+			property='og:title'
+			content='Piotr Cichowlas - Personal Portfolio'
+		/>
+		<meta
+			property='og:description'
+			content="This website is Piotr Cichowlas' portfolio, showcasing his skills in cybersecurity, front-end development, and video editing, with detailed examples of his work and projects."
+		/>
+		<meta
+			name='twitter:title'
+			content='Piotr Cichowlas - Personal Portfolio'
+		/>
+		<meta
+			name='twitter:description'
+			content="This website is Piotr Cichowlas' portfolio, showcasing his skills in cybersecurity, front-end development, and video editing, with detailed examples of his work and projects."
+		/>
+		<meta
+			name='twitter:image'
+			content='https://cichowlasp.github.io/portfolio/favicon.svg'
+		/>
+		<meta
+			name='twitter:card'
+			content='https://cichowlasp.github.io/portfolio/favicon.svg'
+		/>
+		<meta
+			property='og:image'
+			content='https://cichowlasp.github.io/portfolio/favicon.svg'
 		/>
 		<meta name='viewport' content='width=device-width, initial-scale=1.0' />
 		<link rel='icon' type='image/svg+xml' href='/portfolio/favicon.svg' />
