@@ -4,6 +4,7 @@ import Section from '../layouts/Section.astro';
 import Button from '../components/Button.astro';
 import Card from '../components/Card.astro';
 import Projects from '../components/Projects.astro';
+import ProjectCard from '../components/ProjectCard.astro';
 import { Image } from 'astro:assets';
 import { Picture } from 'astro:assets';
 
@@ -176,8 +177,28 @@ const email = 'cichowlas.p@gmail.com';
 			<div class='grid lg:grid-cols-3 lg:gap-4'>
 				<Projects
 					title='Cybersecurity'
-					body='Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat, nesciunt officiis fugit sint sequi omnis quas est ullam consectetur, consequuntur impedit tempore ab deleniti eum. Quibusdam id maiores excepturi magnam!'
-				/>
+					body='In this section, you will find cybersecurity projects that I completed during my studies. These works cover various aspects of Cybersecurity'
+					><div class='mt-4'>
+						<ProjectCard
+							title='software-keylogger'
+							link='https://github.com/cichowlasp/software-keylogger'
+						>
+							The project aims to explore the basic principles of
+							Linux kernel driver operation. The task is to
+							independently develop a driver that operates as a
+							Linux kernel module to handle a basic keyboard. The
+							driver should log all key presses and save them in a
+							chosen manner. Additionally, the driver should
+							include an easter egg that performs an extra
+							operation selected by the authors when the so-called
+							Konami Code is detected on the keyboard. This
+							operation could, for example, involve playing a
+							melody using the system's beeper. The project also
+							includes a browser extension that allows monitoring
+							of the key presses directly from the browser.
+						</ProjectCard>
+					</div>
+				</Projects>
 				<Projects
 					title='Front End Development'
 					body='Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat, nesciunt officiis fugit sint sequi omnis quas est ullam consectetur, consequuntur impedit tempore ab deleniti eum. Quibusdam id maiores excepturi magnam!'

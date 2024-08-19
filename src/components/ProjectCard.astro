@@ -1,0 +1,44 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+	title: string;
+	link?: string;
+}
+
+const { title, link } = Astro.props;
+---
+
+<div class='relative bg-gray-200 py-4 px-6 h-64 w-64 gap-2 rounded-[20px]'>
+	<h4 class='font-bold text-lg mb-2'>{title}</h4>
+	<div
+		class='h-[calc(16rem-8.5rem)] max-h-[calc(16rem-8.5rem)] overflow-y-hidden text-ellipsis bg-gradient-to-b from-gray-900 to-gray-200 bg-clip-text text-transparent'
+	>
+		<slot />
+	</div>
+	<div
+		class='absolute flex flex-row bottom-0 h-16 left-0 right-0 bg-gray-100 justify-around items-center border-gray-200 border-4 rounded-b-[20px]'
+	>
+		<a
+			class='w-full h-full text-center flex justify-center items-center gap-2 font-semibold border-gray-200 border-r-2 hover:bg-gray-200 hover:rounded-bl-[15px]'
+			target='_blank'
+			href={link}
+			><Image
+				width={25}
+				height={25}
+				alt='github'
+				src='/portfolio/github.svg'
+			/>Github</a
+		>
+		<a
+			class='w-full h-full text-center flex justify-center items-center gap-2 font-semibold border-gray-200 border-l-2 hover:bg-gray-200 hover:rounded-br-[15px]'
+			href='#'
+			><Image
+				width={25}
+				height={25}
+				alt='github'
+				src='/portfolio/info.svg'
+			/>More</a
+		>
+	</div>
+</div>
