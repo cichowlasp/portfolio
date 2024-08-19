@@ -10,26 +10,28 @@ const { video } = Astro.props;
 const getId = video.match(/youtube\.com.*(\?v=|\/embed\/)(.{11})/);
 const videoId = getId ? getId[2] : null;
 
-async function getViews() {
+const getViews = async () => {
 	if (videoId === null) return 'error';
 	const response = await fetch(`https://www.youtube.com/watch?v=${videoId}`);
 	const html = await response.text();
 	const viewCount = html?.split('viewCount":"')?.[1]?.split('"')?.[0];
 	return viewCount ? viewCount.replace(/\B(?=(\d{3})+(?!\d))/g, ',') : null;
-}
+};
+
+const views = await getViews();
 ---
 
 <div class='relative bg-gray-200 min-h-64 min-w-64 w-64 h-64 rounded-[20px]'>
 	<div class='h-[calc(16rem-8.5rem)] max-h-[calc(16rem-8.5rem)]'>
 		<Picture
-			src={`http://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
+			src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
 			alt='youtube thumbnail'
 			class='rounded-t-[20px] border-gray-200 border-4'
 			inferSize={true}
 		/>
 		<div class='w-full flex justify-center text-center font-bold pt-2'>
 			<span class='font-semibold mr-1'>Views:</span>
-			{await getViews()}
+			{views}
 		</div>
 	</div>
 	<div
