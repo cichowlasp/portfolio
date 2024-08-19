@@ -3,7 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import Section from '../layouts/Section.astro';
 import Button from '../components/Button.astro';
 import Card from '../components/Card.astro';
-import Image from 'astro/components/Image.astro';
+import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 
 const email = 'cichowlas.p@gmail.com';
 ---
@@ -113,7 +114,7 @@ const email = 'cichowlas.p@gmail.com';
 				<div
 					class='p-[5px] border-[1px] border-gray-300 border-opacity-50 w-fit h-fit rounded-full bg-gray-100 mb-4'
 				>
-					<Image
+					<Picture
 						class='w-48 h-48 object-cover rounded-full'
 						src='/portfolio/me.webp'
 						loading='eager'
