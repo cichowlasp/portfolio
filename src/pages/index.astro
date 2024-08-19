@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Section from '../layouts/Section.astro';
 import Button from '../components/Button.astro';
 import Card from '../components/Card.astro';
+import Projects from '../components/Projects.astro';
 import { Image } from 'astro:assets';
 import { Picture } from 'astro:assets';
 
@@ -173,56 +174,18 @@ const email = 'cichowlas.p@gmail.com';
 		</Section>
 		<Section type='dark' id='projects' title='Projects'>
 			<div class='grid lg:grid-cols-3 lg:gap-4'>
-				<div
-					class='bg-gray-200 p-1 border-[1px] border-gray-300 border-opacity-50 min-h-32 w-[calc(100vw-1rem)] rounded-3xl mb-8 lg:w-fit'
-				>
-					<div
-						class='bg-gray-100 py-4 px-6 min-h-32 w-full gap-2 rounded-[20px]'
-					>
-						<h3 class='font-bold text-xl mb-2'>Cybersecurity</h3>
-						<p>
-							Lorem ipsum, dolor sit amet consectetur adipisicing
-							elit. Quaerat, nesciunt officiis fugit sint sequi
-							omnis quas est ullam consectetur, consequuntur
-							impedit tempore ab deleniti eum. Quibusdam id
-							maiores excepturi magnam!
-						</p>
-					</div>
-				</div>
-				<div
-					class='bg-gray-200 p-1 border-[1px] border-gray-300 border-opacity-50 min-h-32 w-[calc(100vw-1rem)] rounded-3xl mb-8 lg:w-fit'
-				>
-					<div
-						class='bg-gray-100 py-4 px-6 min-h-32 w-full gap-2 rounded-[20px]'
-					>
-						<h3 class='font-bold text-xl mb-2'>
-							Front End Development
-						</h3>
-						<p>
-							Lorem ipsum, dolor sit amet consectetur adipisicing
-							elit. Quaerat, nesciunt officiis fugit sint sequi
-							omnis quas est ullam consectetur, consequuntur
-							impedit tempore ab deleniti eum. Quibusdam id
-							maiores excepturi magnam!
-						</p>
-					</div>
-				</div>
-				<div
-					class='bg-gray-200 p-1 border-[1px] border-gray-300 border-opacity-50 min-h-32 w-[calc(100vw-1rem)] rounded-3xl lg:w-fit'
-				>
-					<div
-						class='bg-gray-100 py-4 px-6 min-h-32 w-full gap-2 rounded-[20px]'
-					>
-						<h3 class='font-bold text-xl mb-2'>Video editing</h3>
-						<p>
-							Lorem ipsum, dolor sit amet consectetur adipisicing
-							elit. Quaerat, nesciunt officiis fugit sint sequi
-							omnis quas est ullam consectetur, consequuntur
-							impedit tempore ab deleniti eum. Quibusdam id
-							maiores excepturi magnam!
-						</p>
-					</div>
-				</div>
+				<Projects
+					title='Cybersecurity'
+					body='Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat, nesciunt officiis fugit sint sequi omnis quas est ullam consectetur, consequuntur impedit tempore ab deleniti eum. Quibusdam id maiores excepturi magnam!'
+				/>
+				<Projects
+					title='Front End Development'
+					body='Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat, nesciunt officiis fugit sint sequi omnis quas est ullam consectetur, consequuntur impedit tempore ab deleniti eum. Quibusdam id maiores excepturi magnam!'
+				/>
+				<Projects
+					title='Video editing'
+					body='Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat, nesciunt officiis fugit sint sequi omnis quas est ullam consectetur, consequuntur impedit tempore ab deleniti eum. Quibusdam id maiores excepturi magnam!'
+				/>
 			</div>
 		</Section>
 		<Section id='contact' type='light'>

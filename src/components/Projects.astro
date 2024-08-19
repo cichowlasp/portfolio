@@ -1,0 +1,20 @@
+---
+interface Props {
+	title: string;
+	body: string;
+}
+
+const { title, body } = Astro.props;
+---
+
+<div
+	class='bg-gray-200 p-1 border-[1px] border-gray-300 border-opacity-50 min-h-32 w-[calc(100vw-1rem)] rounded-3xl mb-8 lg:w-fit'
+>
+	<div class='bg-gray-100 py-4 px-6 min-h-32 w-full gap-2 rounded-[20px]'>
+		<h3 class='font-bold text-xl mb-2'>{title}</h3>
+		<p>
+			{body}
+		</p>
+		<slot />
+	</div>
+</div>
