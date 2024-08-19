@@ -1,10 +1,13 @@
 ---
 import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import Github from '../assets/icons/github.svg';
+import Info from '../assets/icons/info.svg';
 
 interface Props {
 	title: string;
 	link: string;
-	icon?: string;
+	icon?: ImageMetadata;
 	alt?: string;
 	text?: string;
 }
@@ -32,7 +35,7 @@ const { title, link, icon, alt, text } = Astro.props;
 				width={25}
 				height={25}
 				alt={alt ? alt : 'website link'}
-				src={icon ? icon : '/portfolio/github.svg'}
+				src={icon ? icon : Github}
 			/>{text ? text : 'Github'}</a
 		>
 		<a
@@ -41,8 +44,8 @@ const { title, link, icon, alt, text } = Astro.props;
 			><Image
 				width={25}
 				height={25}
-				alt='github'
-				src='/portfolio/info.svg'
+				alt='informations'
+				src={Info}
 			/>More</a
 		>
 	</div>

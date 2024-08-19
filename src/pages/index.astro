@@ -7,6 +7,16 @@ import Projects from '../components/Projects.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import { Image } from 'astro:assets';
 import { Picture } from 'astro:assets';
+import Me from '../assets/pictures/me.webp';
+import Code from '../assets/icons/code.svg';
+import Menu from '../assets/icons/menu.svg';
+import Lock from '../assets/icons/lock.svg';
+import Video from '../assets/icons/video.svg';
+import Laptop from '../assets/icons/laptop.svg';
+import Document from '../assets/icons/document.svg';
+import Contact from '../assets/icons/contact.svg';
+import Email from '../assets/icons/email.svg';
+import Phone from '../assets/icons/phone.svg';
 
 const email = 'cichowlas.p@gmail.com';
 ---
@@ -70,7 +80,7 @@ const email = 'cichowlas.p@gmail.com';
 			>
 				<Image
 					alt='hamburger menu icon'
-					src='/portfolio/menu.svg'
+					src={Menu}
 					height={100}
 					width={100}
 				/>
@@ -118,11 +128,11 @@ const email = 'cichowlas.p@gmail.com';
 				>
 					<Picture
 						class='w-48 h-48 object-cover rounded-full'
-						src='/portfolio/me.webp'
+						src={Me}
 						loading='eager'
 						alt='site creator'
-						width={100}
-						height={100}
+						width={512}
+						height={512}
 					/>
 				</div>
 				<div
@@ -151,22 +161,22 @@ const email = 'cichowlas.p@gmail.com';
 				class='grid grid-cols-2 lg:grid-cols-4 lg:gap-20 gap-10 lg:px-16'
 			>
 				<Card
-					icon='/portfolio/lock.svg'
+					icon={Lock}
 					alt='locker'
 					title='Cybersecurity'
 					body='Securing the future by safeguarding data and systems. Wielding expertise in cybersecurity to protect networks, data, and users from digital threats.'
 				/><Card
-					icon='/portfolio/code.svg'
+					icon={Code}
 					alt='code editor'
 					title='Front End Development'
 					body='Building interactive and responsive web experiences. Creating engaging and dynamic user interfaces with a focus on performance and usability.'
 				/><Card
-					icon='/portfolio/video.svg'
+					icon={Video}
 					alt='film frames'
 					title='Video Editing'
 					body='Transforming raw footage into captivating stories. Blending technical skills and creative vision to produce polished, professional video content.'
 				/><Card
-					icon='/portfolio/laptop.svg'
+					icon={Laptop}
 					alt='laptop'
 					title='Technology Enthusiast'
 					body='Exploring and mastering the latest in tech. From assembling PCs to diving deep into operating systems, driven by a passion for technology.'
@@ -233,7 +243,7 @@ const email = 'cichowlas.p@gmail.com';
 						<ProjectCard
 							title='Penetration Tests'
 							link='https://docs.google.com/document/d/1n6T8gJ5ryGWB1nBYAnePl8lEX86f12jwnq63iZCZaCA/edit?usp=sharing'
-							icon='/portfolio/document.svg'
+							icon={Document}
 							alt='document'
 							text='Doc'
 						>
@@ -254,7 +264,7 @@ const email = 'cichowlas.p@gmail.com';
 						<ProjectCard
 							title='Advanced Penetration Tests'
 							link='https://politechnikawroclawska-my.sharepoint.com/:w:/g/personal/253300_student_pwr_edu_pl/EVnAWk_sRE9FncDgjoLo_TIB02v_wh_fLNbBoJkynN6idQ?e=dZITfX'
-							icon='/portfolio/document.svg'
+							icon={Document}
 							alt='document'
 							text='Doc'
 						>
@@ -300,7 +310,7 @@ const email = 'cichowlas.p@gmail.com';
 					class='rounded-full bg-gradient-to-b from-gray-200 to-gray-100 m-1'
 				>
 					<Image
-						src='/portfolio/contact.svg'
+						src={Contact}
 						alt='contact informations'
 						height={200}
 						width={200}
@@ -323,7 +333,7 @@ const email = 'cichowlas.p@gmail.com';
 						class='bg-gray-900 hover:bg-gray-700 text-gray-100 py-4 px-6 rounded-full flex flex-row items-center justify-center w-32 gap-2'
 					>
 						<Image
-							src='/portfolio/email.svg'
+							src={Email}
 							class='fill-gray-100'
 							alt='email envelope'
 							width={20}
@@ -341,7 +351,7 @@ const email = 'cichowlas.p@gmail.com';
 						class='bg-gray-100 hover:bg-gray-300 text-gray-800 py-4 px-6 rounded-full flex flex-row items-center w-32 justify-center gap-2'
 					>
 						<Image
-							src='/portfolio/phone.svg'
+							src={Phone}
 							alt='old phone'
 							width={20}
 							height={20}
