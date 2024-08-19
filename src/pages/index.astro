@@ -56,12 +56,14 @@ const email = 'cichowlas.p@gmail.com';
 
 			<div class='lg:flex flex-row gap-4 font-normal text-lg hidden'>
 				<a
+					id='link'
 					href='#start'
 					class='hover:underline hover:underline-offset-2 hover:cursor-pointer'
 					>Top</a
 				>
 				<div>/</div>
 				<a
+					id='link'
 					href='#about-me'
 					class='hover:underline hover:underline-offset-2 hover:cursor-pointer'
 					>About Me</a
@@ -69,11 +71,13 @@ const email = 'cichowlas.p@gmail.com';
 				<div>/</div>
 				<a
 					href='#projects'
+					id='link'
 					class='hover:underline hover:underline-offset-2 hover:cursor-pointer'
 					>Projects</a
 				>
 				<div>/</div>
 				<a
+					id='link'
 					href='#contact'
 					class='hover:underline hover:underline-offset-2 hover:cursor-pointer'
 					>Contact</a
@@ -97,24 +101,28 @@ const email = 'cichowlas.p@gmail.com';
 		>
 			<a
 				href='#start'
+				id='link'
 				class='hover:underline hover:underline-offset-2 hover:cursor-pointer'
 				>Top</a
 			>
 
 			<a
 				href='#about-me'
+				id='link'
 				class='hover:underline hover:underline-offset-2 hover:cursor-pointer'
 				>About Me</a
 			>
 
 			<a
 				href='#projects'
+				id='link'
 				class='hover:underline hover:underline-offset-2 hover:cursor-pointer'
 				>Projects</a
 			>
 
 			<a
 				href='#contact'
+				id='link'
 				class='hover:underline hover:underline-offset-2 hover:cursor-pointer'
 				>Contact</a
 			>
@@ -457,7 +465,7 @@ const email = 'cichowlas.p@gmail.com';
 		copyButton.textContent = 'Copy';
 	});
 
-	document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+	document.querySelectorAll('#link').forEach((anchor) => {
 		anchor.addEventListener('click', function (event) {
 			event.preventDefault();
 
