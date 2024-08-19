@@ -3,13 +3,18 @@ import { Image } from 'astro:assets';
 
 interface Props {
 	title: string;
-	link?: string;
+	link: string;
+	icon?: string;
+	alt?: string;
+	text?: string;
 }
 
-const { title, link } = Astro.props;
+const { title, link, icon, alt, text } = Astro.props;
 ---
 
-<div class='relative bg-gray-200 py-4 px-6 h-64 w-64 gap-2 rounded-[20px]'>
+<div
+	class='relative bg-gray-200 py-4 px-6 min-h-64 min-w-64 w-64 h-64 gap-2 rounded-[20px]'
+>
 	<h4 class='font-bold text-lg mb-2'>{title}</h4>
 	<div
 		class='h-[calc(16rem-8.5rem)] max-h-[calc(16rem-8.5rem)] overflow-y-hidden text-ellipsis bg-gradient-to-b from-gray-900 to-gray-200 bg-clip-text text-transparent'
@@ -26,9 +31,9 @@ const { title, link } = Astro.props;
 			><Image
 				width={25}
 				height={25}
-				alt='github'
-				src='/portfolio/github.svg'
-			/>Github</a
+				alt={alt ? alt : 'github'}
+				src={icon ? icon : '/portfolio/github.svg'}
+			/>{text ? text : 'Github'}</a
 		>
 		<a
 			class='w-full h-full text-center flex justify-center items-center gap-2 font-semibold border-gray-200 border-l-2 hover:bg-gray-200 hover:rounded-br-[15px]'
