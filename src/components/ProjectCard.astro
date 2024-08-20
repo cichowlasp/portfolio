@@ -44,7 +44,7 @@ const { title, link, icon, alt, text, demo } = Astro.props;
 			class='w-full h-full text-center flex justify-center items-center gap-2 font-semibold border-gray-200 border-l-2 hover:bg-gray-200 hover:rounded-br-[15px]'
 			href={demo ? demo : '#'}
 			target='_blank'
-			id={title.split(' ')[0].toLowerCase()}
+			id={demo ? '' : title.split(' ')[0].toLowerCase()}
 			><Image
 				width={25}
 				height={25}
@@ -59,8 +59,10 @@ const { title, link, icon, alt, text, demo } = Astro.props;
 <script define:vars={{ title }}>
 	const id = title.split(' ')[0].toLowerCase();
 	const more = document.querySelector('#' + id);
-	more.addEventListener('click', (e) => {
-		e.preventDefault();
-		console.log(id);
-	});
+	if (more) {
+		more.addEventListener('click', (e) => {
+			e.preventDefault();
+			console.log(id);
+		});
+	}
 </script>
