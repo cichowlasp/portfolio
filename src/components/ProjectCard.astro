@@ -59,22 +59,24 @@ const id = title.split(' ')[0].toLowerCase();
 	</div>
 </div>
 <div
-	id={demo ? '' : 'more-info' + title.split(' ')[0].toLowerCase()}
+	id={demo ? '' : title.split(' ')[0].toLowerCase()}
 	class='hidden z-20 fixed top-0 bottom-0 left-0 right-0 bg-gray-900 bg-opacity-50'
 >
 	<div
-		class='fixed top-8 bottom-8 left-8 right-8 bg-gray-100 rounded-3xl drop-shadow-sm p-16 lg:px-64'
+		class='fixed top-8 bottom-8 left-8 right-8 bg-gray-100 rounded-3xl drop-shadow-sm p-8 pt-32 lg:px-64'
 	>
 		<Button
-			id='close-more'
+			id={'close-more' + title.split(' ')[0].toLowerCase()}
 			button={false}
 			class='bg-gray-200 mt-0 px-4 py-1 font-normal text-xl absolute right-4 top-4 z-30'
 			simple={true}>&times;</Button
 		>
 		<h5 class='font-bold text-2xl mb-4'>{title}</h5>
-		<p class='mb-8'><slot /></p>
+		<p class='mb-8 max-w-full max-h-[calc(100%-10rem)] overflow-auto'>
+			<slot />
+		</p>
 		<div
-			class='bg-gray-200 rounded-full mx-auto p-1 border-[1px] lg:w-64 w-full border-gray-300 border-opacity-50 flex flex-row items-center gap-4 font-bold'
+			class='absolute bottom-8 right-16 left-16 lg:right-64 lg:left-64 bg-gray-200 rounded-full mx-auto p-1 border-[1px] lg:w-128 border-gray-300 border-opacity-50 flex flex-row items-center gap-4 font-bold'
 			'
 		>
 			<a
@@ -94,25 +96,30 @@ const id = title.split(' ')[0].toLowerCase();
 	</div>
 
 	<script type='module' define:vars={{ id }}>
-		const more = document.querySelector('#' + id);
-		const moreInfo = document.querySelector('#more-info' + id);
-
-		const openMoreInfo = () => {
-			if (moreInfo.classList.contains('hidden')) {
-				moreInfo.classList.replace('hidden', 'flex');
-				retrun;
-			}
-			moreInfo.classList.replace('flex', 'hidden');
-		};
-
-		if (more) {
-			more.addEventListener('click', (e) => {
-				e.preventDefault();
-				openMoreInfo();
+		const buttons = document.querySelectorAll('a');
+		const filteredButtons = [...buttons].filter(
+			(el) => el.innerText === 'More'
+		);
+		filteredButtons.forEach((el) => {
+			const closeBtn = document.querySelector('#close-more' + el.id);
+			closeBtn.addEventListener('click', (event) => {
+				event.preventDefault();
+				const moreInfo = document.querySelector(
+					'div[id=' + el.id + ']'
+				);
+				moreInfo.classList.replace('flex', 'hidden');
 			});
-		}
-
-		const closeMore = document.querySelector('#close-more');
-		closeMore.addEventListener('click', () => openMoreInfo());
+			el.addEventListener('click', (event) => {
+				event.preventDefault();
+				const moreInfo = document.querySelector(
+					'div[id=' + el.id + ']'
+				);
+				if (moreInfo.classList.contains('hidden')) {
+					moreInfo.classList.replace('hidden', 'flex');
+				} else {
+					moreInfo.classList.replace('flex', 'hidden');
+				}
+			});
+		});
 	</script>
 </div>
