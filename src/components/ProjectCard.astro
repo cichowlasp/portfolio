@@ -17,6 +17,7 @@ interface Props {
 }
 
 const { title, link, icon, alt, text, demo } = Astro.props;
+const id = title.split(' ')[0].toLowerCase();
 ---
 
 <div
@@ -58,7 +59,7 @@ const { title, link, icon, alt, text, demo } = Astro.props;
 	</div>
 </div>
 <div
-	id='more-info'
+	id={demo ? '' : 'more-info' + title.split(' ')[0].toLowerCase()}
 	class='hidden z-20 fixed top-0 bottom-0 left-0 right-0 bg-gray-900 bg-opacity-50'
 >
 	<div
@@ -92,10 +93,9 @@ const { title, link, icon, alt, text, demo } = Astro.props;
 		</div>
 	</div>
 
-	<script define:vars={{ title }}>
-		const id = title.split(' ')[0].toLowerCase();
+	<script type='module' define:vars={{ id }}>
 		const more = document.querySelector('#' + id);
-		const moreInfo = document.querySelector('#more-info');
+		const moreInfo = document.querySelector('#more-info' + id);
 
 		const openMoreInfo = () => {
 			if (moreInfo.classList.contains('hidden')) {
