@@ -7,15 +7,16 @@ interface Props extends HTMLAttributes<'button'> {
 	dark?: boolean;
 	href?: string;
 	download?: string;
-	button?: boolean
+	button?: boolean;
+	padding?: string;
 }
-const { info, simple = false, dark = false, href, download, button = true } = Astro.props;
+const { info, simple = false, dark = false, href, download, button = true, padding } = Astro.props;
 ---
 
 {
 	href && download && <div class=` bg-gray-200 rounded-full p-1 border-[1px] border-gray-300 border-opacity-50 flex flex-row items-center gap-4 font-bold ${Astro.props.class}`>
 			{info ? <div class='pl-4 font-normal'>{info}</div> : null}
-			<a href={href} download={download} class=` ${dark? 'bg-gray-900 text-gray-100 hover:bg-gray-700' : 'bg-gray-100 text-gray-900 hover:bg-gray-300'} py-4 px-8 rounded-full` {...Astro.props}>
+			<a href={href} download={download} class=`${dark? 'bg-gray-900 text-gray-100 hover:bg-gray-700' : 'bg-gray-100 text-gray-900 hover:bg-gray-300'} px-8 py-2 md:py-4 md:px-8 rounded-full` {...Astro.props}>
 				<slot />
 			</a>
 		</div>
@@ -32,7 +33,7 @@ const { info, simple = false, dark = false, href, download, button = true } = As
 {
 button && <div class=` bg-gray-200 rounded-full p-1 border-[1px] border-gray-300 border-opacity-50 flex flex-row items-center gap-4 font-bold ${Astro.props.class}`>
 			{info ? <div class='pl-4 font-normal'>{info}</div> : null}
-			<button class=` ${dark? 'bg-gray-900 text-gray-100 hover:bg-gray-700' : 'bg-gray-100 text-gray-900 hover:bg-gray-300'} py-4 px-8 rounded-full` {...Astro.props}>
+			<button class=` ${dark? 'bg-gray-900 text-gray-100 hover:bg-gray-700' : 'bg-gray-100 text-gray-900 hover:bg-gray-300'} px-8 py-2 md:py-4 md:px-8 rounded-full` {...Astro.props}>
 				<slot />
 			</button>
 </div>

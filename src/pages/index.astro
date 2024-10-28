@@ -18,6 +18,9 @@ import Document from '../assets/icons/document.svg';
 import Contact from '../assets/icons/contact.svg';
 import Email from '../assets/icons/email.svg';
 import Phone from '../assets/icons/phone.svg';
+import Instagram from '../assets/icons/instagram.svg';
+import Linkedin from '../assets/icons/linkedin.svg';
+import Twitter from '../assets/icons/twitter.svg';
 import BankingDashboard from '../assets/projects/banking-dashboard.png';
 import FakeDashboard from '../assets/projects/fake-dashboard.png';
 import TipCalculator from '../assets/projects/tip-calculator.png';
@@ -29,7 +32,7 @@ const email = 'cichowlas.p@gmail.com';
 <Layout title='Piotr Cichowlas'>
 	<main class='flex justify-center items-center flex-col'>
 		<nav
-			class='bg-gray-200 flex flex-row justify-between w-screen max-w-screen py-4 lg:p-8 lg:px-16 px-4 items-center sticky top-0 z-10 border-b-2 border-gray-300 border-opacity-50 overflow-hidden'
+			class='bg-gray-200 flex flex-row justify-between w-screen max-w-screen py-2 md:py-4 lg:px-16 px-4 items-center sticky top-0 z-10 border-b-2 border-gray-300 border-opacity-50 overflow-hidden'
 		>
 			<div class='flex gap-4'>
 				<div
@@ -38,13 +41,16 @@ const email = 'cichowlas.p@gmail.com';
 				>
 					<a
 						href='mailto:cichowlas.p@gmail.com'
-						class=`bg-gray-900 hover:bg-gray-700 text-gray-100 py-4 px-8 rounded-full`
+						class=`bg-gray-900 hover:bg-gray-700 text-gray-100 px-8 py-2 md:py-4 md:px-8 rounded-full`
 					>
 						Email
 					</a>
 				</div>
-				<Button class='lg:flex hidden' id='copy' info={email}
-					>Copy</Button
+				<Button
+					class='lg:flex hidden md:p'
+					id='copy'
+					info={email}
+					padding='py-4 px-8'>Copy</Button
 				>
 				<Button
 					button={false}
@@ -99,6 +105,16 @@ const email = 'cichowlas.p@gmail.com';
 			id='mobile-menu'
 			class='top-0 right-0 left-0 h-screen hidden fixed bg-gray-200 z-20 flex-col justify-center items-center gap-8 text-xl'
 		>
+			<div
+				class='bg-gray-900 w-full h-8 flex flex-row-reverse absolute top-0'
+			>
+				<Button
+					id='close-menu'
+					button={false}
+					class='pr-4 px-0 py-0 bg-transparent font-normal text-gray-200 text-xl rounded-none w-fit'
+					simple={true}>&times;</Button
+				>
+			</div>
 			<a
 				href='#start'
 				id='link'
@@ -125,13 +141,6 @@ const email = 'cichowlas.p@gmail.com';
 				id='link'
 				class='hover:underline hover:underline-offset-2 hover:cursor-pointer'
 				>Contact</a
-			>
-
-			<Button
-				id='close-menu'
-				button={false}
-				class='bg-gray-100 mt-0 px-4 py-1 font-normal text-xl absolute right-4 top-4'
-				simple={true}>&times;</Button
 			>
 		</div>
 		<Section id='start' type='dark'>
@@ -447,9 +456,25 @@ const email = 'cichowlas.p@gmail.com';
 		</Section>
 	</main>
 	<footer
-		class='bg-gray-200 h-24 flex justify-center items-center text-center font-light text-sm'
+		class='bg-gray-200 h-24 flex px-8 md:justify-evenly justify-between items-center text-center font-light text-sm max-w-[100vw] overflow-hidden'
 	>
 		<div>👨🏻‍💻 Piotr Cichowlas 2024</div>
+		<div class='flex gap-2 justify-center items-center'>
+			<a class='flex gap-1 hover:underline' href=''>
+				<Image alt='Link to instagram profile' src={Instagram} />
+				<div class='hidden md:block'>Instagram</div>
+			</a>
+			<div>/</div>
+			<a class='flex gap-1 hover:underline' href=''>
+				<Image alt='Link to Twitter profile' src={Twitter} />
+				<div class='hidden md:block'>Twitter</div>
+			</a>
+			<div>/</div>
+			<a class='flex gap-1 hover:underline' href=''>
+				<Image alt='Link to Linkedin profile' src={Linkedin} />
+				<div class='hidden md:block'>Linkedin</div>
+			</a>
+		</div>
 	</footer>
 </Layout>
 
