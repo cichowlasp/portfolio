@@ -21,6 +21,7 @@ import Phone from '../assets/icons/phone.svg';
 import Instagram from '../assets/icons/instagram.svg';
 import Linkedin from '../assets/icons/linkedin.svg';
 import Twitter from '../assets/icons/twitter.svg';
+import UpDown from '../assets/icons/up-down.svg';
 import BankingDashboard from '../assets/projects/banking-dashboard.png';
 import FakeDashboard from '../assets/projects/fake-dashboard.png';
 import TipCalculator from '../assets/projects/tip-calculator.png';
@@ -29,11 +30,64 @@ import Portfolio from '../assets/projects/portfolio.png';
 const email = 'cichowlas.p@gmail.com';
 ---
 
+<style>
+	:root {
+		--count: 60%;
+	}
+	#progress {
+		border-radius: 50%;
+		position: relative;
+		border: 2px solid rgb(75 85 99);
+		background-color: rgb(17 24 39);
+	}
+
+	#progress::after {
+		content: '';
+		display: block;
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		right: 0px;
+		bottom: 0px;
+		background-color: transparent;
+		background-image: conic-gradient(
+			rgb(229 231 235),
+			rgb(229 231 235) var(--count),
+			transparent var(--count)
+		);
+		border-radius: 21.5px;
+	}
+
+	#progress::after::after {
+	}
+</style>
+
 <Layout title='Piotr Cichowlas'>
 	<main class='flex justify-center items-center flex-col'>
 		<nav
-			class='bg-gray-200 flex flex-row justify-between w-screen max-w-screen py-2 md:py-4 lg:px-16 px-4 items-center sticky top-0 z-10 border-b-2 border-gray-300 border-opacity-50 overflow-hidden'
+			class='bg-gray-200 flex flex-row justify-between w-screen max-w-screen py-2 md:py-4 lg:px-16 px-4 items-center sticky top-0 z-10 border-b-2 border-gray-300 border-opacity-50'
 		>
+			<div
+				class='px-1 absolute right-[50%] translate-x-[50%] top-20 md:top-28 md:right-32 w-32 h-6 bg-gray-900 rounded-full text-xs text-gray-200 flex justify-between items-center'
+			>
+				<span
+					id='progress'
+					class='w-4 h-4 border-gray-200 border-2 rounded-full'
+				></span>
+				<span class='flex'
+					>Index <Image
+						src={UpDown}
+						class='ml-1 invert'
+						alt='Index action'
+						height={12}
+					/></span
+				>
+				<span
+					id='percent'
+					class='text-[10px] rounded-full bg-gray-600 w-10 text-center'
+					>0%</span
+				>
+			</div>
 			<div class='flex gap-4'>
 				<div
 					class='lg:hidden bg-gray-200 rounded-full p-1 border-[1px] border-gray-300 border-opacity-50 flex flex-row items-center gap-4 font-bold'
@@ -551,4 +605,35 @@ const email = 'cichowlas.p@gmail.com';
 			behavior: 'smooth',
 		})
 	);
+
+	const percent = document.querySelector('#percent');
+
+	document.addEventListener('scroll', () => {
+		let h = document.documentElement,
+			b = document.body,
+			st = 'scrollTop',
+			sh = 'scrollHeight';
+
+		let r = document.querySelector(':root');
+
+		function calculateScrollPercent() {
+			// Get scroll position and viewport height for mobile accuracy
+			let scrollTop = h[st] || b[st];
+			let scrollHeight = h[sh] || b[sh];
+			let viewportHeight = window.innerHeight;
+
+			// Calculate the percentage scrolled
+			return Math.round(
+				Math.max(
+					0,
+					Math.min(
+						(scrollTop / (scrollHeight - viewportHeight)) * 100,
+						100
+					)
+				)
+			);
+		}
+		r.style.setProperty('--count', calculateScrollPercent() + '%');
+		percent.innerHTML = calculateScrollPercent() + '%';
+	});
 </script>
