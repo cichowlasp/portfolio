@@ -4,8 +4,6 @@ import type { ImageMetadata } from 'astro';
 import Github from '../assets/icons/github.svg';
 import Info from '../assets/icons/info.svg';
 import Website from '../assets/icons/website.svg';
-import Button from './Button.astro';
-import colors from 'tailwindcss/colors';
 
 interface Props {
 	title: string;
@@ -23,7 +21,9 @@ const id = title.split(' ')[0].toLowerCase();
 <div
 	class='relative bg-gray-200 py-4 px-6 min-h-64 min-w-64 w-64 h-64 gap-2 rounded-[20px]'
 >
-	<h4 class='font-bold text-lg mb-2'>{title}</h4>
+	<h4 class='font-bold text-lg mb-2'>
+		{title}
+	</h4>
 	<div
 		class='h-[calc(16rem-8.5rem)] max-h-[calc(16rem-8.5rem)] overflow-y-hidden text-ellipsis bg-gradient-to-b from-gray-900 to-gray-200 bg-clip-text text-transparent'
 	>
