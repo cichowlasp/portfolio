@@ -70,25 +70,58 @@ const email = 'cichowlas.p@gmail.com';
 			class='bg-gray-200 flex flex-row justify-between w-screen max-w-screen py-2 md:py-4 lg:px-16 px-4 items-center sticky top-0 z-10 border-b-2 border-gray-300 border-opacity-50'
 		>
 			<div
-				class='px-1 absolute right-[50%] translate-x-[50%] top-20 md:top-28 md:right-32 w-32 h-6 bg-gray-900 rounded-full text-xs text-gray-200 flex justify-between items-center'
+				class='px-1 absolute right-[50%] translate-x-[50%] top-20 md:top-28 md:right-32 w-32 h-6 bg-gray-900 rounded-full text-xs text-gray-200 flex flex-col py-1 items-center cursor-pointer hover:bg-gray-800 transition-all duration-300 overflow-hidden shadow-lg pb-0'
+				id='progress-pill'
 			>
-				<span
-					id='progress'
-					class='w-4 h-4 border-gray-200 border-2 rounded-full'
-				></span>
-				<span class='flex'
-					>Index <Image
-						src={UpDown}
-						class='ml-1 invert'
-						alt='Index action'
-						height={12}
-					/></span
+				<div class='flex w-full items-center justify-between'>
+					<span
+						id='progress'
+						class='w-4 h-4 border-gray-200 border-2 rounded-full'
+					></span>
+					<span
+						class='flex items-center whitespace-nowrap'
+						id='section-indicator'
+						>Top <Image
+							src={UpDown}
+							class='ml-1 invert transition-transform duration-300'
+							id='arrow-icon'
+							alt='Index action'
+							height={12}
+						/></span
+					>
+					<span
+						id='percent'
+						class='text-[10px] rounded-full bg-gray-600 w-10 text-center'
+						>0%</span
+					>
+				</div>
+
+				<!-- Navigation links that will appear when expanded -->
+				<div
+					id='nav-links'
+					class='hidden w-full mt-2 flex-col gap-2 opacity-0 transition-all duration-300 border-t border-gray-700'
 				>
-				<span
-					id='percent'
-					class='text-[10px] rounded-full bg-gray-600 w-10 text-center'
-					>0%</span
-				>
+					<a
+						href='#start'
+						class='text-gray-200 hover:text-white py-2 px-3 hover:bg-gray-800 rounded transition-colors flex items-center'
+						>Top</a
+					>
+					<a
+						href='#about-me'
+						class='text-gray-200 hover:text-white py-2 px-3 hover:bg-gray-800 rounded transition-colors flex items-center'
+						>About Me</a
+					>
+					<a
+						href='#projects'
+						class='text-gray-200 hover:text-white py-2 px-3 hover:bg-gray-800 rounded transition-colors flex items-center'
+						>Projects</a
+					>
+					<a
+						href='#contact'
+						class='text-gray-200 hover:text-white py-2 px-3 hover:bg-gray-800 rounded transition-colors flex items-center'
+						>Contact</a
+					>
+				</div>
 			</div>
 			<div class='flex gap-4'>
 				<div
@@ -661,5 +694,170 @@ const email = 'cichowlas.p@gmail.com';
 		}
 		r.style.setProperty('--count', calculateScrollPercent() + '%');
 		percent.innerHTML = calculateScrollPercent() + '%';
+
+		// Call the updateCurrentSection function to update the section indicator
+		updateCurrentSection();
 	});
+
+	// Progress pill transformation functionality
+	const progressPill = document.querySelector('#progress-pill');
+	const navLinks = document.querySelector('#nav-links');
+	const sectionIndicator = document.querySelector('#section-indicator');
+	const arrowIcon = document.querySelector('#arrow-icon');
+	let isExpanded = false;
+
+	// Initialize styles to ensure consistent behavior on first click
+	window.addEventListener('DOMContentLoaded', () => {
+		progressPill.style.borderRadius = '16px';
+	});
+
+	// Toggle transformation of the pill
+	progressPill?.addEventListener('click', () => {
+		if (!isExpanded) {
+			// Rotate arrow icon
+			arrowIcon.style.transform = 'rotate(180deg)';
+
+			// Expand with a smooth animation
+			progressPill.style.width = '200px';
+			progressPill.style.height = '190px';
+			progressPill.style.borderRadius = '16px';
+			progressPill.style.paddingTop = '12px'; // Add padding to the top when expanded
+			progressPill.style.paddingRight = '15px';
+			progressPill.style.paddingLeft = '15px';
+			// Show navigation links with a slight delay for a sequential animation
+			setTimeout(() => {
+				navLinks.classList.remove('hidden');
+				navLinks.classList.add('flex');
+
+				// Fade in the links with a slight delay
+				setTimeout(() => {
+					navLinks.style.opacity = '1';
+					navLinks.style.transform = 'translateY(0)';
+				}, 50);
+			}, 200);
+
+			isExpanded = true;
+		} else {
+			// Reset arrow icon
+			arrowIcon.style.transform = 'rotate(0deg)';
+
+			// Fade out links first
+			navLinks.style.opacity = '0';
+			navLinks.style.transform = 'translateY(10px)';
+
+			// Then collapse the pill with a slight delay
+			setTimeout(() => {
+				progressPill.style.width = '128px';
+				progressPill.style.height = '24px';
+				progressPill.style.paddingTop = '0.25rem'; // Reset padding when collapsed
+				progressPill.style.paddingRight = '0.25rem';
+				progressPill.style.paddingLeft = '0.25rem';
+				// Hide the links after animation completes
+				setTimeout(() => {
+					navLinks.classList.add('hidden');
+					navLinks.classList.remove('flex');
+				}, 300);
+
+				isExpanded = false;
+			}, 100);
+		}
+	});
+
+	// Close expanded pill when clicking elsewhere
+	document.addEventListener('click', (event) => {
+		if (!progressPill.contains(event.target) && isExpanded) {
+			// Reset arrow icon
+			arrowIcon.style.transform = 'rotate(0deg)';
+
+			// Fade out links first
+			navLinks.style.opacity = '0';
+			navLinks.style.transform = 'translateY(10px)';
+
+			// Then collapse the pill with a slight delay
+			setTimeout(() => {
+				progressPill.style.transition =
+					'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+				progressPill.style.width = '128px';
+				progressPill.style.height = '24px';
+
+				// Hide the links after animation completes
+				setTimeout(() => {
+					navLinks.classList.add('hidden');
+					navLinks.classList.remove('flex');
+				}, 300);
+
+				isExpanded = false;
+			}, 100);
+		}
+	});
+
+	// Add smooth scrolling to navigation links
+	navLinks.querySelectorAll('a').forEach((anchor) => {
+		anchor.addEventListener('click', function (event) {
+			event.preventDefault();
+
+			// Reset arrow icon
+			arrowIcon.style.transform = 'rotate(0deg)';
+
+			// Collapse the pill
+			navLinks.style.opacity = '0';
+			navLinks.style.transform = 'translateY(10px)';
+
+			setTimeout(() => {
+				progressPill.style.width = '128px';
+				progressPill.style.height = '24px';
+
+				setTimeout(() => {
+					navLinks.classList.add('hidden');
+					navLinks.classList.remove('flex');
+				}, 300);
+
+				isExpanded = false;
+			}, 100);
+
+			document.querySelector(this.getAttribute('href')).scrollIntoView({
+				behavior: 'smooth',
+			});
+		});
+	});
+
+	// Initialize transform property for smooth animations
+	navLinks.style.transform = 'translateY(10px)';
+	navLinks.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+
+	// Track current section
+	const sections = ['start', 'about-me', 'projects', 'contact'];
+	const sectionElements = sections.map((id) => document.getElementById(id));
+
+	function updateCurrentSection() {
+		const scrollPosition = window.scrollY + window.innerHeight / 3;
+
+		// Find the current section
+		let currentSection = 'Top';
+		for (let i = sectionElements.length - 1; i >= 0; i--) {
+			const section = sectionElements[i];
+			if (section && scrollPosition >= section.offsetTop) {
+				currentSection = section.id;
+				break;
+			}
+		}
+
+		// Update the section indicator text
+		switch (currentSection) {
+			case 'start':
+				sectionIndicator.textContent = 'Top';
+				break;
+			case 'about-me':
+				sectionIndicator.textContent = 'About Me';
+				break;
+			case 'projects':
+				sectionIndicator.textContent = 'Projects';
+				break;
+			case 'contact':
+				sectionIndicator.textContent = 'Contact';
+				break;
+			default:
+				sectionIndicator.textContent = 'Index';
+		}
+	}
 </script>
