@@ -1,15 +1,42 @@
 ---
 const { frontmatter } = Astro.props;
+import Instagram from '../assets/icons/instagram.svg';
+import Linkedin from '../assets/icons/linkedin.svg';
+import Twitter from '../assets/icons/twitter.svg';
+import { Image } from 'astro:assets';
 ---
 
 <html lang='en'>
 	<head>
 		<meta charset='utf-8' />
 		<meta name='viewport' content='width=device-width, initial-scale=1' />
+		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
 		<title>{frontmatter.title}</title>
 	</head>
-	<body>
-		<main>
+	<body class='min-h-screen flex flex-col'>
+		<div class='bg-white sticky top-0 z-10 py-4 px-4 border-b'>
+			<div class='max-w-4xl mx-auto'>
+				<a
+					href='/blog'
+					class='inline-flex items-center text-blue-600 hover:text-blue-800'
+				>
+					<svg
+						xmlns='http://www.w3.org/2000/svg'
+						class='h-5 w-5 mr-1'
+						viewBox='0 0 20 20'
+						fill='currentColor'
+					>
+						<path
+							fill-rule='evenodd'
+							d='M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z'
+							clip-rule='evenodd'></path>
+					</svg>
+					Back
+				</a>
+			</div>
+		</div>
+
+		<main class='flex-grow'>
 			<article class='max-w-4xl mx-auto px-4 py-6'>
 				<div class='mb-8'>
 					<h1 class='text-4xl font-bold mb-2'>{frontmatter.title}</h1>
@@ -75,6 +102,40 @@ const { frontmatter } = Astro.props;
 				</div>
 			</article>
 		</main>
+
+		<footer
+			class='bg-gray-200 h-24 flex px-8 md:justify-evenly justify-between items-center text-center font-light text-sm max-w-[100vw] overflow-hidden'
+		>
+			<div>👨🏻‍💻 Piotr Cichowlas {new Date().getFullYear()}</div>
+			<div class='flex gap-2 justify-center items-center'>
+				<a
+					class='flex gap-1 hover:underline'
+					target='_blank'
+					href='https://www.instagram.com/cichowlasp/'
+				>
+					<Image alt='Link to instagram profile' src={Instagram} />
+					<div class='hidden md:block'>Instagram</div>
+				</a>
+				<div>/</div>
+				<a
+					class='flex gap-1 hover:underline'
+					target='_blank'
+					href='https://x.com/cichowlasp'
+				>
+					<Image alt='Link to Twitter profile' src={Twitter} />
+					<div class='hidden md:block'>Twitter</div>
+				</a>
+				<div>/</div>
+				<a
+					class='flex gap-1 hover:underline'
+					target='_blank'
+					href='https://www.linkedin.com/in/piotr-cichowlas/'
+				>
+					<Image alt='Link to Linkedin profile' src={Linkedin} />
+					<div class='hidden md:block'>Linkedin</div>
+				</a>
+			</div>
+		</footer>
 	</body>
 </html>
 
