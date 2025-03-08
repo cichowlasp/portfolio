@@ -2,6 +2,121 @@
 const { frontmatter } = Astro.props;
 ---
 
-<h1>{frontmatter.title}</h1>
-<p>Written by {frontmatter.author}</p>
-<slot />
+<html lang='en'>
+	<head>
+		<meta charset='utf-8' />
+		<meta name='viewport' content='width=device-width, initial-scale=1' />
+		<title>{frontmatter.title}</title>
+	</head>
+	<body>
+		<main>
+			<article class='max-w-4xl mx-auto px-4 py-6'>
+				<div class='mb-8'>
+					<h1 class='text-4xl font-bold mb-2'>{frontmatter.title}</h1>
+
+					<div class='flex items-center text-gray-600 mb-4'>
+						{
+							frontmatter.pubDate && (
+								<time datetime={frontmatter.pubDate}>
+									Published on:{' '}
+									{new Date(
+										frontmatter.pubDate
+									).toLocaleDateString()}
+								</time>
+							)
+						}
+						{
+							frontmatter.author && (
+								<span class='ml-4'>
+									Written by {frontmatter.author}
+								</span>
+							)
+						}
+					</div>
+
+					{
+						frontmatter.image && frontmatter.image.url && (
+							<div class='my-6'>
+								<img
+									src={frontmatter.image.url}
+									alt={
+										frontmatter.image.alt ||
+										frontmatter.title
+									}
+									class='rounded-lg max-h-[400px] w-full object-cover'
+								/>
+							</div>
+						)
+					}
+
+					{
+						frontmatter.tags && frontmatter.tags.length > 0 && (
+							<div class='flex flex-wrap gap-2 my-4'>
+								{frontmatter.tags.map((tag: string) => (
+									<span class='bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full'>
+										{tag}
+									</span>
+								))}
+							</div>
+						)
+					}
+
+					{
+						frontmatter.description && (
+							<p class='text-lg text-gray-700 italic mb-6'>
+								{frontmatter.description}
+							</p>
+						)
+					}
+				</div>
+
+				<div class='prose prose-lg max-w-none'>
+					<slot />
+				</div>
+			</article>
+		</main>
+	</body>
+</html>
+
+<style>
+	/* Styling for markdown content */
+	.prose :global(h1) {
+		@apply text-3xl font-bold my-6;
+	}
+	.prose :global(h2) {
+		@apply text-2xl font-bold mt-8 mb-4;
+	}
+	.prose :global(h3) {
+		@apply text-xl font-bold mt-6 mb-3;
+	}
+	.prose :global(p) {
+		@apply my-4;
+	}
+	.prose :global(ul) {
+		@apply list-disc pl-6 my-4;
+	}
+	.prose :global(ol) {
+		@apply list-decimal pl-6 my-4;
+	}
+	.prose :global(li) {
+		@apply mb-1;
+	}
+	.prose :global(a) {
+		@apply text-blue-600 hover:underline;
+	}
+	.prose :global(strong) {
+		@apply font-bold;
+	}
+	.prose :global(em) {
+		@apply italic;
+	}
+	.prose :global(blockquote) {
+		@apply border-l-4 border-gray-300 pl-4 italic my-6;
+	}
+	.prose :global(code) {
+		@apply bg-gray-100 px-1 py-0.5 rounded font-mono text-sm;
+	}
+	.prose :global(pre) {
+		@apply bg-gray-100 p-4 rounded-lg my-6 overflow-x-auto;
+	}
+</style>
