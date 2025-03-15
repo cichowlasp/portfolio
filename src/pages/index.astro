@@ -745,7 +745,9 @@ const email = 'cichowlas.p@gmail.com';
 					'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
 				progressPill.style.width = '128px';
 				progressPill.style.height = '24px';
-
+				progressPill.style.paddingTop = '0.25rem'; // Reset padding when collapsed
+				progressPill.style.paddingRight = '0.25rem';
+				progressPill.style.paddingLeft = '0.25rem';
 				// Hide the links after animation completes
 				setTimeout(() => {
 					navLinks.classList.add('hidden');
