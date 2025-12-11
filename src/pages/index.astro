@@ -26,6 +26,7 @@ import FakeDashboard from '../assets/projects/fake-dashboard.png';
 import TipCalculator from '../assets/projects/tip-calculator.png';
 import Portfolio from '../assets/projects/portfolio.png';
 import TaskList from '../assets/projects/task-list.png';
+import NordRazors from '../assets/projects/nord-razors.png';
 import CIC from '../assets/projects/cic.png';
 
 const email = 'cichowlas.p@gmail.com';
@@ -373,6 +374,17 @@ const email = 'cichowlas.p@gmail.com';
 					body='A showcase of responsive web apps built with modern front-end technologies. Check out the live demos to see them in action!'
 				>
 					<div class='flex flex-row gap-4 overflow-x-auto max-w-full'>
+						<ProjectCard
+							title='Nord Razors'
+							link='https://nordrazors.com/'
+							demo='https://nordrazors.com/'
+						>
+							<Picture
+								class='w-full h-full object-contain'
+								src={NordRazors}
+								alt='Nord Razors – modern and precise shaving razors combining elegance with convenience.'
+							/>
+						</ProjectCard>
 						<ProjectCard
 							title='Task List'
 							link='https://github.com/cichowlasp/job-status'
